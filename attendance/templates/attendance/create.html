@@ -18,7 +18,7 @@
         <select name="filter" id="filter">
             <option value="ADULT">Adult</option>
             <option value="YOUTH">Youth</option>
-            <option value="CHILDREN">Children</option>
+            <!-- <option value="CHILDREN">Children</option> -->
             <option value="ZONES">Zones</option>
         </select>
     </div>
@@ -29,7 +29,7 @@
     <div class="scene scene--card">
         <div class="card">
             <div class="card__face card__face--front">
-                <a href="#"  class="image"><img src="{{member.photo.url}}" alt="DP" width="180" height="200"></a> 
+                <a href=""  class="image"><img src="{{member.photo.url}}" alt="DP" width="180" height="200"></a> 
               
             </div>
             <div class="card__face card__face--back">
@@ -42,13 +42,13 @@
             </div>
         </div>
         <div class="name">
-            <h3 style="font-size: small; padding-top: 1%;">{{member.get_generic_name}}</h3>
+            <h3 style="font-size: small; padding-top: 1%;">{{member.generic_name}}</h3>
         </div>
     </div>
     {%endif%}
     {%endfor%}
     
-
+    <p id="names"></p>
     <div class="submit">
         <input class="button" type="submit" value="Done">
     </div> 
@@ -62,11 +62,15 @@
 
       <script>
           var cards = document.querySelectorAll('.card');
+          
 
         [...cards].forEach((card)=>{
         card.addEventListener( 'click', function() {
             card.classList.toggle('is-flipped');
         });
         });
+        "{{ members|safe }}".forEach(item => {
+            console.log(item)
+        })
       </script>
       {%endblock%}

@@ -68,8 +68,9 @@ class Member(AbstractUser):
     class Meta:
         verbose_name = _('member')
         verbose_name_plural = _('members')
-
-    def get_generic_name(self):
+    
+    @property
+    def generic_name(self):
         if str.lower(self.church_role) == "elder":
             title = "Eld."
         elif str.lower(self.church_role) == "deacon":
